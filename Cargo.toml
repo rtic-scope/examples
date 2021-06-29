@@ -12,8 +12,8 @@ nb = "1"
 cortex-m = "0.7"
 cortex-m-rt = "0.6"
 panic-halt = "0.2"
-cortex-m-rtic =  { git = "https://github.com/rtic-rs/cortex-m-rtic" }
-rtic-trace = { git = "https://github.com/tmplt/rtic-trace" }
+cortex-m-rtic = "0.6.0-alpha"
+rtic-trace = { git = "https://github.com/rtic-scope/rtic-trace" }
 
 [dependencies.stm32f4]
 version = "0.13"
@@ -24,4 +24,4 @@ version = "0.9"
 features = ["rt", "stm32f401"]
 
 [patch.crates-io]
-cortex-m = { git = "https://github.com/tmplt/cortex-m", branch = "feat/tracing" }
+cortex-m = { git = "https://github.com/rtic-scope/cortex-m", branch = "feat/tracing" }
