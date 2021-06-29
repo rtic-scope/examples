@@ -128,7 +128,7 @@ dependencies = [
 [[package]]
 name = "cortex-m-rtic-trace"
 version = "0.1.0-alpha.0"
-source = "git+https://github.com/rtic-scope/cortex-m-rtic-trace#d4841d29d68552b5ffd6e4b32c31b26be0eda4bf"
+source = "git+https://github.com/rtic-scope/cortex-m-rtic-trace#12d3aa7c06acdd8850ce9bf1505bb1506c911403"
 dependencies = [
  "cortex-m",
  "rtic-trace-macros",
@@ -414,7 +414,7 @@ dependencies = [
 [[package]]
 name = "rtic-trace-macros"
 version = "0.1.0-alpha.0"
-source = "git+https://github.com/rtic-scope/cortex-m-rtic-trace#d4841d29d68552b5ffd6e4b32c31b26be0eda4bf"
+source = "git+https://github.com/rtic-scope/cortex-m-rtic-trace#12d3aa7c06acdd8850ce9bf1505bb1506c911403"
 dependencies = [
  "quote",
  "syn",

@@ -47,6 +47,8 @@ mod app {
         );
         cortex_m_rtic_trace::setup::device_peripherals(&mut ctx.device.DBGMCU);
         cortex_m_rtic_trace::setup::assign_dwt_unit(&ctx.core.DWT.c[1]);
+        // TODO(16_000_000) automagically find this freq
+        cortex_m_rtic_trace::setup::send_trace_clk_freq(16_000_000);
 
         (
             init::LateResources {
