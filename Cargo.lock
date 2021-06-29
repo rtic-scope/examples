@@ -126,6 +126,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "cortex-m-rtic-trace"
+version = "0.1.0-alpha.0"
+source = "git+https://github.com/rtic-scope/cortex-m-rtic-trace#d4841d29d68552b5ffd6e4b32c31b26be0eda4bf"
+dependencies = [
+ "cortex-m",
+ "rtic-trace-macros",
+ "stm32f4",
+]
+
+[[package]]
 name = "embedded-dma"
 version = "0.1.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -402,19 +412,9 @@ dependencies = [
 ]
 
 [[package]]
-name = "rtic-trace"
-version = "0.1.0"
-source = "git+https://github.com/rtic-scope/rtic-trace#5c8adcd1a3ac00f3f04e29a08766d6a757e525a9"
-dependencies = [
- "cortex-m",
- "rtic-trace-macros",
- "stm32f4",
-]
-
-[[package]]
 name = "rtic-trace-macros"
-version = "0.1.0"
-source = "git+https://github.com/rtic-scope/rtic-trace#5c8adcd1a3ac00f3f04e29a08766d6a757e525a9"
+version = "0.1.0-alpha.0"
+source = "git+https://github.com/rtic-scope/cortex-m-rtic-trace#d4841d29d68552b5ffd6e4b32c31b26be0eda4bf"
 dependencies = [
  "quote",
  "syn",
@@ -526,10 +526,10 @@ dependencies = [
  "cortex-m",
  "cortex-m-rt",
  "cortex-m-rtic",
+ "cortex-m-rtic-trace",
  "embedded-hal",
  "nb 1.0.0",
  "panic-halt",
- "rtic-trace",
  "stm32f4",
  "stm32f4xx-hal",
 ]

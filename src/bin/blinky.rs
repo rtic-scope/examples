@@ -4,10 +4,10 @@
 use panic_halt as _; // panic handler
 use rtic::app;
 
-#[app(device = stm32f4::stm32f401, peripherals = true, dispatchers = [EXTI1])]
+#[app(device = stm32f4::stm32f401, peripherals = true)]
 mod app {
     use cortex_m::peripheral::syst::SystClkSource;
-    use rtic_trace::{self, trace};
+    use cortex_m_rtic_trace::{self, trace};
     use stm32f4xx_hal::stm32;
     use cortex_m::asm;
 
@@ -39,14 +39,14 @@ mod app {
         ctx.device.GPIOA.moder.modify(|_, w| w.moder5().bits(1));
 
         // configure tracing
-        rtic_trace::setup::core_peripherals(
+        cortex_m_rtic_trace::setup::core_peripherals(
             &mut ctx.core.DCB,
             &mut ctx.core.TPIU,
             &mut ctx.core.DWT,
             &mut ctx.core.ITM,
         );
-        rtic_trace::setup::device_peripherals(&mut ctx.device.DBGMCU);
-        rtic_trace::setup::assign_dwt_unit(&ctx.core.DWT.c[1]);
+        cortex_m_rtic_trace::setup::device_peripherals(&mut ctx.device.DBGMCU);
+        cortex_m_rtic_trace::setup::assign_dwt_unit(&ctx.core.DWT.c[1]);
 
         (
             init::LateResources {
@@ -54,18 +54,6 @@ mod app {
             },
             init::Monotonics(),
         )
-    }
-
-    #[task(priority = 2)]
-    #[trace]
-    fn software_task(_: software_task::Context) {
-        asm::delay(512);
-
-        #[trace]
-        fn nested() {
-            asm::delay(256);
-        }
-        nested();
     }
 
     #[task(binds = SysTick, resources = [GPIOA])]
@@ -81,12 +69,5 @@ mod app {
                 .lock(|gpioa| gpioa.bsrr.write(|w| w.br5().set_bit()));
         }
         *TOGGLE = !*TOGGLE;
-
-        software_task::spawn().unwrap();
-    }
-
-    #[task(binds = ADC)]
-    fn external(_: external::Context) {
-
     }
 }
