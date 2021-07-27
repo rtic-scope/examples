@@ -4,6 +4,17 @@ version = "0.1.0"
 authors = ["Viktor Sonesten <v@tmplt.dev>"]
 edition = "2018"
 
+[package.metadata.rtic-scope]
+pac = "stm32f4"
+pac_features = ["stm32f401"]
+interrupt_path = "stm32f4::stm32f401::Interrupt"
+
+# Used as fallback if the above package-level metadata block is not declared
+[workspace.metadata.rtic-scope]
+pac = "stm32f4"
+pac_features = ["stm32f401"]
+interrupt_path = "stm32f4::stm32f401::Interrupt"
+
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
